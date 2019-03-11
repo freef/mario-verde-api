@@ -1,59 +1,104 @@
-# Hello! Welcome to the Project 2 API
-1.  Rename your app module in `config/application.rb` (change
-    `RailsApiTemplate`).
-1.  Rename your project database in `config/database.yml` (change
-    `'rails-api-template'`).
+# Mario Verde Client
+Hi all and welcome to the GitHub Repo for Mario Verde.
+This project is designed to be a matchmaking service for those looking for someone to play with.
 
-### Setup Environment:
-1.  Install dependencies with `bundle install`.
-1.  `git add` and `git commit` your changes.
-1.  Create a `.env` for sensitive settings (`touch .env`).
-1.  Generate new `development` and `test` secrets (`bundle exec rails secret`).
-1.  Store them in `.env` with keys `SECRET_KEY_BASE_<DEVELOPMENT|TEST>`
-    respectively.
-1.  In order to make requests to your deployed API, you will need to set
-    `SECRET_KEY_BASE` in the environment of the production API (for example, using `heroku config:set` or the Heroku dashboard).
-1.  In order to make requests from your deployed client application, you will
-    need to set `CLIENT_ORIGIN` in the environment of the production API (for example, `heroku config:set CLIENT_ORIGIN=https://<github-username>.github.io`).
-    See more about deploying to heroku [rails-heroku-setup-guide](https://git.generalassemb.ly/ga-wdi-boston/rails-heroku-setup-guide)
+## Description
+We all know that games are more fun when played together, but random matchmaing provides limited tools for making new friends and that the built in tools for meeting peeople seem to bring out the worst in everyone.
+This tool aims to make it easier to play together.
+On Mario Verde players can post events, each with a title, description, time, and some contact info. Players can then reach out and make plans to play with each other. Thus making
+## Technology
+### Front End
+- [HTML 5](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference)
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference)
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference)
+- [jQuery](https://api.jquery.com/)
+- [Bootstrap](https://getbootstrap.com/docs/4.3/getting-started/introduction/)
+- [Handlebars JS](https://handlebarsjs.com/)
 
-### Setup your database:
-    - bin/rails db:drop (if it already exists)
-    - bin/rails db:create
-    - bin/rails db:migrate
-    - bin/rails db:seed
-    - bin/rails db:examples
+### Back End
+- [PostgreSQL](https://www.postgresql.org/docs/)
+- [Ruby](https://ruby-doc.org/)
+- [Ruby on Rails](https://guides.rubyonrails.org/)
 
-  Note: Remember to follow the same commands when setting up your deployed database!
+## How it works
+Front end makes ajax requests to the api.
+the API is a restufl api built on ruby on rails. it queries the database and returns a JSON.
+JavaScript parses the JSON and renders pieces of it on the page using handlebars.
 
-### Run your server!
-1. Run the API server with `bin/rails server` or `bundle exec rails server`.
+## Planning
+The biggest challenge in planning this project was deciding on what to make. My original idea was for a find a belay buddy site but I disliked how reliant that idea was on location, so I applied the same idea to online games. The service is geared more towards owners of a nintendo switch and tabletop players but will also be flexible enough for players on other platforms to make use of it.
 
-## Structure
+Next I planned out my "pie in the sky" project database, by mapping out tables and planning columns.
 
-This template follows the standard project structure in Rails.
+From there I drew up some quick wireframes to give me a vague idea of how my project should work.
 
-`curl` command scripts are stored in [`curl-scripts`](curl-scripts) with names that
-correspond to API actions.
+My development process from this point has been entirely driven by the information in the [requirments](./requirements.md) file.
 
-User authentication is built-in.
+This document will list planned improvements and will be the guiding doc for all future improvements. Please see that section for more information on my planning process.
 
-## Tasks
+## Problem solving
+- Check that the problem is a requirment
+- Double check that its actually a requirement
+- Read the error message
+- Check for plurlalization/capitalization
+- Check syntax
+- Check if the code thats giving you trouble works somewhere else
+- Simplify the code/process
+- console log paramaters
+- console log output
+- try running code again
+- Try do do it differently if none of the above worked and you still get the same error message
 
-Developers should run these often!
 
--   `bin/rails routes` lists the endpoints available in your API.
--   `bin/rspec spec` runs automated tests.
--   `bin/rails console` opens a REPL that pre-loads the API.
--   `bin/rails db` opens your database client and loads the correct database.
--   `bin/rails server` starts the API.
--   `curl-scripts/*.sh` run various `curl` commands to test the API. See below.
+## Entity Relationship Diagram
+[Initial ERD](https://imgur.com/CjyIGyF)
+
+Current ERD
+```
+|users|-|-<|events|
+```
+
+## Known Bugs
+honestly there's so little right now that i don't know of any. Please open an issue if you find any.
+
+## Wirerames
+[Desktop](https://imgur.com/3rN1cbD)
+[Mobile](https://imgur.com/sRafjj3)
+
+## User stories
+as a user I'd like to create an account so i can browse games
+as a user I'd like to log in so i can respond to events
+as a user I'd like to create an event to play with strangers online
+as a user I'd like to check and see if players have responded to my event
+as a user I'd like to sign up to "attend" an event hosted by another player so i can play games
+as a user I'd like to hide my email/discord id/nintendo id from the genral public
+as a user i'd like my email/discord id/nintendo ide to be visible to attendees or hosts for events i'm participating in
+
+## Potential Future Improvements
+- Meta
+  - find a better way to identify and catalog necessary UX improvements
+- UI Improvements
+  - Put each item in a box
+  - Create Nav Bar
+  - Add Color
+  - allow users to hide their contact info
+- Features
+  - Pin the user's events to the top
+  - allow users to delete their events in by clicking a delete button related to that event
+  - allow users to hide events they arent interested in attending
+  - allow users to only display events based on a dropdown
+  - allow users to search for events by keyword
+  - sort events by date
+  - hide events with past dates
+  - allow users to sign up as an attendee for an event
+-DB Changes
+  - add column to users for profile
+  - add column to users for discord id
+  - add column to events for platform (xbox, pc, switch, playstation, tabletop)
+  - create attendees table
+    - many to many relationship from events and users
 
 ## API
-
-Use this as the basis for your own API documentation. Add a new third-level
-heading for your custom entities, and follow the pattern provided for the
-built-in user authentication documentation.
 
 Scripts are included in [`curl-scripts`](curl-scripts) to test built-in actions. Add your
 own scripts to test your custom API. As an alternative, you can write automated
@@ -66,7 +111,7 @@ tests in RSpec to test your API.
 | POST   | `/sign-up`             | `users#signup`    |
 | POST   | `/sign-in`             | `users#signin`    |
 | PATCH  | `/change-password`     | `users#changepw`  |
-| DELETE | `/sign-out`        | `users#signout`   |
+| DELETE | `/sign-out`            | `users#signout`   |
 
 #### POST /sign-up
 
@@ -289,31 +334,12 @@ Content-Type: application/json; charset=utf-8
 {"user":{"id":1,"email":"mike@m"}}
 ```
 
-### Reset Database without dropping
 
-This is not a task developers should run often, but it is sometimes necessary.
-
-**locally**
-
-```sh
-bin/rails db:migrate VERSION=0
-bin/rails db:migrate db:seed db:examples
-```
-
-**heroku**
-
-```sh
-heroku run rails db:migrate VERSION=0
-heroku run rails db:migrate db:seed db:examples
-```
-
-## Additional Resources
-- [rails-heroku-setup-guide](https://git.generalassemb.ly/ga-wdi-boston/rails-heroku-setup-guide)
-- http://guides.rubyonrails.org/api_app.html
-- https://blog.codeship.com/building-a-json-api-with-rails-5/
-
-## [License](LICENSE)
-
-1.  All content is licensed under a CC­BY­NC­SA 4.0 license.
-1.  All software code is licensed under GNU GPLv3. For commercial use or
-    alternative licensing, please contact legal@ga.co.
+### Events
+| Verb    | URI Pattern           | Controller#Action |
+|---------|-----------------------|-------------------|
+| POST    | `/events`             | `users#create`    |
+| GET     | `/events`             | `events#index`    |
+| GET     |  `/events/:id`        | `events#show`     |
+| PATCH   | `/events/:id`         | `events#update`   |
+| DELETE  | `/events/:id`         | `events#destroy`  |
