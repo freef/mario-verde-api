@@ -1,5 +1,5 @@
 class EventsController < OpenReadController
-  before_action :set_event, only: [:show, :update, :destroy]
+  before_action :set_event, only: [:update, :destroy]
 
   # GET /events
   def index
@@ -10,6 +10,7 @@ class EventsController < OpenReadController
 
   # GET /events/1
   def show
+    @event = Event.find(params[:id])
     render json: @event
   end
 
