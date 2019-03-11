@@ -1,6 +1,8 @@
 # Mario Verde Client
 Hi all and welcome to the GitHub Repo for Mario Verde.
 This project is designed to be a matchmaking service for those looking for someone to play with.
+This repo is for the API and back end of this project. For the front end please visit https://github.com/freef/mario-verde
+the deployed site is availabe at https://freef.github.io/mario-verde/
 
 ## Description
 We all know that games are more fun when played together, but random matchmaing provides limited tools for making new friends and that the built in tools for meeting peeople seem to bring out the worst in everyone.
