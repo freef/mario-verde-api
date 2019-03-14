@@ -8,8 +8,10 @@ curl "http://localhost:4741/events" \
   --data '{
     "event": {
       "title": "'"${TITLE}"'",
-      "description": "'"${DES}"'",
-      "date": "'"${DATE}"'"
+      "description": "'"${DESCRIPTION}"'",
+      "date": "'"${DATE}"'",
+      "time": "'"${TIME}"'",
+      "console": "'"${CONSOLE}"'"
     }
   }'
 
