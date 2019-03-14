@@ -5,7 +5,7 @@ class EventsController < OpenReadController
 
   # GET /events
   def index
-    @events = Event.all
+    @events = Event.all.order('date ASC')
     render json: @events
   end
 
@@ -17,7 +17,7 @@ class EventsController < OpenReadController
 
   # GET /evets
   def my_index
-    @event = current_user.events.all
+    @event = current_user.events.all.order('date ASC')
     render json: @event
   end
 
@@ -53,8 +53,12 @@ class EventsController < OpenReadController
     @event = current_user.events.find(params[:id])
   end
 
+  def sort_event
+    @sort_dates= @event.files.order("date DESC").all
+  end
+
   # Only allow a trusted parameter "white list" through.
   def event_params
-    params.require(:event).permit(:title, :description, :date, :time)
+    params.require(:event).permit(:title, :description, :date, :time, :console)
   end
 end

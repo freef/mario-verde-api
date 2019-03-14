@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class EventSerializer < ActiveModel::Serializer
-  attributes :id, :title, :description, :date, :readtime, :time
+  attributes :id, :title, :description, :date, :readtime, :time, :console
   belongs_to :user
 
   def readtime
